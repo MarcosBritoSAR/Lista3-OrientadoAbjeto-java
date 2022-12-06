@@ -1,31 +1,46 @@
 package Questao4;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 public class Pessoas {
 
     Scanner leia = new Scanner(System.in);
     int idadeA = 0, idadeM = 0, idadeD = 0;
+
     int diaA, diaN;
     int mesA, mesN;
     int anoA, anoN;
+    
     int qntMes = 0, qntAno = 0, qntDia = 0;
     String nome;
 
-    public Pessoas(int dia, int mes, int ano, String nome) {
-        this.diaN = dia;
-        this.mesN = mes;
-        this.anoN = ano;
+    public Pessoas(String nome) {
         this.nome = nome;
     }
 
+    public String infomaIdade() {
+        calculeIdade();
+        return +this.qntAno + " anos, " + this.qntMes + " meses e " + this.qntDia + " dias";
+    }
+
+    public String informaNome() {
+        return this.nome;
+    }
+
+    public void ajustaDataDeNascimento(int dia, int mes, int ano) {
+        this.diaN = dia;
+        this.mesN = mes;
+        this.anoN = ano;
+    }
+
     public void calculeIdade() {
-        System.out.println("informe em qual dia estamos ");
-        this.diaA = leia.nextInt();
-        System.out.println("informe em qual mês estamos ");
-        this.mesA = leia.nextInt();
-        System.out.println("informe em qual ano estamos ");
-        this.anoA = leia.nextInt();
+        Calendar cal = new GregorianCalendar();
+        
+        this.diaA = cal.get(Calendar.DAY_OF_MONTH);
+        this.mesA = cal.get(Calendar.MONTH);
+        this.anoA = cal.get(Calendar.YEAR);
 
         if (dataValida(this.diaN, this.mesN, this.anoA) == 1) {
             while (this.mesN < this.mesA - 1 || this.anoN < this.anoA) {
@@ -51,7 +66,6 @@ public class Pessoas {
                 this.qntDia = diaNoMes((this.mesA - 1), this.anoA) + (this.diaA - diaN);
             }
 
-            System.out.println("anos: " + this.qntAno + " mes: " + this.qntMes + " dias: " + this.qntDia);
         } else {
             System.out.println("Data inválida");
         }
