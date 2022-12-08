@@ -16,7 +16,7 @@ public class Pessoas {
     int qntMes = 0, qntAno = 0, qntDia = 0;
     String nome;
 
-    public Pessoas(String nome) {
+    public Pessoas(String nome) {//constructor
         this.nome = nome;
     }
 

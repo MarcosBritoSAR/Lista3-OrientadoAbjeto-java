@@ -7,7 +7,7 @@ public class Voo {
 
     String data;
     String horario;
-    int[] cadeira = new int[10];
+    int[] cadeira = new int[100];
     int numeroDoVoo;
 
     public Voo(int numeroDeVoo, String data, String horario) {
