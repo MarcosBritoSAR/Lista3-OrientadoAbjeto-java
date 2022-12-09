@@ -1,45 +1,53 @@
-
 package Questao9;
 
-
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
 public class Paises {
+
     String nome, capital;
     double dimenssao;
     String[] fronteira = new String[50];
-    
-    public Paises(String nome, String capital, double dimenssao){
-       this.nome = nome;
-       this.capital = capital;
-       this.dimenssao = dimenssao;
-   }
-    
-    public boolean equals(final Paises outro){
-        if(getNome()== outro.getNome()){
+
+    public Paises(String nome, String capital, double dimenssao) {
+        this.nome = nome;
+        this.capital = capital;
+        this.dimenssao = dimenssao;
+    }
+
+    public boolean equals(final Paises outro) {
+
+        if (getNome() == outro.getNome()) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-    
-    public String[] vizinhosCompartilhados(final Paises outro){
-        String[] compartilham = new String[this.fronteira.length];
-        for(int i =0,aux = 0; i< this.fronteira.length; i++){
-            for(int b = 0; b < this.fronteira.length; b++ ){
-                if(this.fronteira[i] == outro.fronteira[b]){
-                    compartilham[aux] = this.fronteira[i];
-                    aux++;
+
+    public String vizinhosCompartilhados(final Paises outro) {
+        String compartilham = "[";
+        for (int i = 0; i < this.fronteira.length; i++) {
+
+            for (int b = 0; b < outro.fronteira.length; b++) {
+
+                if (this.fronteira[i] == outro.fronteira[b]) {
+
+                    compartilham += this.fronteira[i]+" ";
                 }
+
             }
+
         }
-        return compartilham;
+
+        return compartilham+"]";
     }
-    public void divisa(String[] divisa{
-        setFronteira(divisa);
+
+    public void divisa(String[] divisa) {
+        this.fronteira = divisa;
     }
-    
-    public String[]  paizesVizinhos(){
-        return getFronteira();
+
+    public String paizesVizinhos() {
+        return Arrays.toString(this.fronteira);
     }
 
     public String getNome() {
@@ -66,18 +74,12 @@ public class Paises {
         this.dimenssao = dimenssao;
     }
 
-    public String[] getFronteira() {
-        return fronteira;
-    }
-
     public void setFronteira(String[] fronteira) {
         this.fronteira = fronteira;
     }
-
-    void divisa(String uruguai, String argentina, String paraguai, String bolívia, String peru, String colômbia, String venezuela, String guiana, String _Suriname) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    
+    public String getFronteira() {
+        return Arrays.toString(fronteira);
     }
-  
-   
-   
+
 }
